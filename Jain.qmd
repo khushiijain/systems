@@ -91,6 +91,8 @@ kable(extreme_stars <- long_max |>
 #| warning: false
 factions_battletech <- vroom(here("data", "bt+factions.csv"), na = "unknown")
 factions_control <- vroom(here("data", "BT-FACTION-SYSTEM.csv"), na = "unknown")
+factions <- factions_battletech |>
+  full_join(factions_control, by = join_by(FKEY))
 ```
 
 ### Q8-9 Star systems in 2821
@@ -108,7 +110,7 @@ kable(factions_control |> summarise(
 ### Q10
 
 ```{r}
-factions |> summarise(df1 = sum(is.na(`DETAILED STRUCTURE`)))
+df1 <- factions |> summarise(sum(is.na(`DETAILED STRUCTURE`)))
 ```
 
 
