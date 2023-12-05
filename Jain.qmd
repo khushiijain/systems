@@ -27,6 +27,27 @@ Git-hub Project: [systems](https://github.com/khushiijain/systems)
 ```{r}
 #| message: false
 #| warning: false
-systems <- vroom(here("data", "All-systems.csv"), na = "unknown", locale = locale(decimal_mark = ","))
+systems <- vroom(here("data", "All-systems.csv"), locale = locale(decimal_mark = ","))
 ```
+
+
+### 4 Data Description
+```{r}
+# Findind variables with missing values
+vars_with_na <- colnames(systems)[colSums(is.na(systems)) > 0]
+
+#Final Table
+kable(systems |> summarise(
+  `Number of Observations` = nrow(systems),
+  `Number of variables` = ncol(systems),
+  `Number of Missing values for RELATIVE RADIUS` = sum(is.na(`RELATIVE RADIUS`)),
+  `Number of Missing values for Effective Temperature` = sum(is.na(`Effective Temperature`)),
+  `Number of Missing values for star luminosity` = sum(is.na(`star luminosity`)),
+  `Number of observations with at least one missing value` = systems |>
+    mutate(across(everything(), is.na)) |>
+    rowwise() |>
+    sum(TRUE)
+  ))
+```
+
 
