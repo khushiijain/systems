@@ -85,8 +85,14 @@ kable(extreme_stars <- long_max |>
   full_join(long_min, by = join_by(STAR_NAME, star_key, `TYPE OF STAR`, name, value)))
 ```
 
+### Q7-8 New data files
 
-
+```{r}
+#| message: false
+#| warning: false
+factions <- vroom(here("data", "bt+factions.csv"), na = "unknown")
+factions_control <- vroom(here("data", "BT-FACTION-SYSTEM.csv"), na = "unknown")
+```
 
 
 
