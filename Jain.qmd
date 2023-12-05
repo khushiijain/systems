@@ -18,6 +18,11 @@ library(ggplot2)
 library(knitr)
 ```
 
+## Main data set import
+
+### Q1 
+Added data file and committed it. 
+
 ### Q2 Git
 
 Git-hub Project: [systems](https://github.com/khushiijain/systems)
@@ -29,7 +34,6 @@ Git-hub Project: [systems](https://github.com/khushiijain/systems)
 #| warning: false
 systems <- vroom(here("data", "All-systems.csv"), locale = locale(decimal_mark = ","))
 ```
-
 
 ### 4 Data Description
 ```{r}
