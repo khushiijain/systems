@@ -85,15 +85,24 @@ kable(extreme_stars <- long_max |>
   full_join(long_min, by = join_by(STAR_NAME, star_key, `TYPE OF STAR`, name, value)))
 ```
 
-### Q7-8 New data files
-
+### Q7 New data files
 ```{r}
 #| message: false
 #| warning: false
-factions <- vroom(here("data", "bt+factions.csv"), na = "unknown")
+factions_battletech <- vroom(here("data", "bt+factions.csv"), na = "unknown")
 factions_control <- vroom(here("data", "BT-FACTION-SYSTEM.csv"), na = "unknown")
 ```
 
+### Q8-9 Star systems in 2821
 
+```{r}
+kable(factions_control |> summarise(
+  `Number of Abandoned star systems` = sum(`DETAILED STRUCTURE` == "A"), 
+  `Number of Independent star systems` = sum(`DETAILED STRUCTURE` == "I"),
+  `Number of Undiscovered star systems` = sum(`DETAILED STRUCTURE` == "U")
+  ),
+  caption = "Star systems in 2821"
+)
+```
 
 
