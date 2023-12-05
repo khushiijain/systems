@@ -5,3 +5,28 @@ format: html
 editor: visual
 ---
 
+Configuration
+
+```{r}
+#| message: false
+library(here)
+here::i_am("systems.Rproj")
+library(vroom)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(knitr)
+```
+
+### Q2 Git
+
+Git-hub Project: [systems](https://github.com/khushiijain/systems)
+
+### Q3 Load Data
+
+```{r}
+#| message: false
+#| warning: false
+systems <- vroom(here("data", "All-systems.csv"), na = "unknown", locale = locale(decimal_mark = ","))
+```
+
