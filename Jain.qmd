@@ -105,4 +105,17 @@ kable(factions_control |> summarise(
 )
 ```
 
+### Q10
+
+```{r}
+factions |> summarise(df1 = sum(is.na(`DETAILED STRUCTURE`)))
+```
+
+
+```{r}
+df2 <- pull(df1)
+```
+
+`r df2 `star systems cannot be found in the BT-FACTIONSYSTEM.csv file.
+
 
