@@ -54,4 +54,17 @@ kable(systems |> summarise(
   ))
 ```
 
+##  Introductory analysis
+
+### 5 Graphical Representation
+```{r}
+systems |>
+  filter(!is.na(`Effective Temperature`)) |>
+  filter(!is.na(`Star Mass`)) |>
+  ggplot(aes(x=`Effective Temperature`, y=`Star Mass`)) +
+  geom_col()+
+  labs(title = "Mass of a star as a function of its temperature")
+```
+
+
 
