@@ -65,4 +65,29 @@ systems |>
   geom_col()+
   labs(title = "Mass of a star as a function of its temperature")
 ```
+### 6 Extreme Stars
+
+```{r}
+#table with numerical variables
+long_table <- systems %>%
+  pivot_longer(cols = c(`Star Mass`, Distance, `Effective Temperature`, `RELATIVE RADIUS`, `star luminosity`)) |>
+  group_by(name)
+```
+
+```{r}
+#extreme minimum and maximum
+long_min <- long_table |> slice_min(value) 
+long_max <- long_table |> slice_max(value)
+```
+
+```{r}
+kable(extreme_stars <- long_max |>
+  full_join(long_min, by = join_by(STAR_NAME, star_key, `TYPE OF STAR`, name, value)))
+```
+
+
+
+
+
+
 
