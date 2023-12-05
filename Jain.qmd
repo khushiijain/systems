@@ -119,4 +119,25 @@ df2 <- pull(df1)
 `r df2 `star systems cannot be found in the BT-FACTIONSYSTEM.csv file.
 
 ### Q11
+Calculating star systems controlled by each faction.
+```{r}
+each_faction <- factions |>
+  group_by(`Name Of The Faction`) |>
+  filter(!is.na(star_key)) |>
+  summarise(n = sum(star_key))
+```
+
+```{r}
+each_faction |>
+  ggplot(aes(x= `Name Of The Faction`, y=n)) +
+  geom_col() + 
+    theme(axis.text.x = element_text(angle = 70, hjust = 1)) +
+   labs(title = "Number of star systems controlled by each faction")
+```
+### Q12
+```{r}
+star_factions <- systems |>
+  full_join(factions, by = join_by(star_key))
+```
+
 
