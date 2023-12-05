@@ -32,7 +32,7 @@ Git-hub Project: [systems](https://github.com/khushiijain/systems)
 ```{r}
 #| message: false
 #| warning: false
-systems <- vroom(here("data", "All-systems.csv"), locale = locale(decimal_mark = ","))
+systems <- vroom(here("data", "All-systems.csv"), locale = locale(decimal_mark = "."))
 ```
 
 ### 4 Data Description
@@ -65,6 +65,4 @@ systems |>
   geom_col()+
   labs(title = "Mass of a star as a function of its temperature")
 ```
-
-
 
